@@ -1,0 +1,20 @@
+Ao efetuar o patch, para mockar um objeto/função/classe/..., devemos nos atentar ao seguinte:
+
+- o patch precisa receber o pacote de onde a função se origina.
+
+Por exemplo, ao mockar a função 'print', devemos utilizar
+
+patch('builtins.print'), pois a função print vem do package builtins
+
+------------
+
+return_value: irá retornar um valor dentro da chamada de uma função mockada
+
+side_effect <tuple>: irá retornar a tuple de valores, em ordem de recepção de parâmetros
+
+
+------------
+
+O caminho mais correto para os testes é simplesmente prever o que o código irá retornar, 
+desse modo, antecipa-se as respostas e o comportamento do código, como um todo
+
