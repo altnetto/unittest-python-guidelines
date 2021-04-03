@@ -1,11 +1,13 @@
 from app.models.item import ItemModel
+from app.models.store import StoreModel
 from tests.conftest import BaseTest
 
 
 class ItemTest(BaseTest):
     def test_crud(self):
         with self.app_context():
-            item = ItemModel('test', 19.99)
+            StoreModel('test').save_to_db()
+            item = ItemModel('test', 19.99, 1)
 
             # verifica se o item não existe no banco de dados
             # o terceiro argumento é uma mensagem de erro personalizada, que pode ajudar muito no decorrer das execuções de testes
