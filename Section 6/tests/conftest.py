@@ -9,7 +9,7 @@ class BaseTest(TestCase):
         with app.app_context():
             db.create_all()
 
-        self.app = app.test_client()
+        self.app = app.test_client
         self.app_context = app.app_context
 
 

@@ -15,7 +15,7 @@ class Item(Resource):
                         help="Every item needs a store id.")
 
 
-    @jwt_required
+    @jwt_required()
     def get(self, name):
         item = ItemModel.find_by_name(name)
         if item:
@@ -63,5 +63,6 @@ class Item(Resource):
 
 
 class ItemList(Resource):
+    @jwt_required()
     def get(self):
         return {'items': [x.json() for x in ItemModel.query.all()]}

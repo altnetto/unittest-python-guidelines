@@ -10,12 +10,11 @@ class BaseTest(TestCase):
     @classmethod
     def setUpClass(cls):
         app = create_app()
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+        app.config.from_object('app.config.TestConfig')
 
 
     def setUp(self):
         app = create_app()
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
         with app.app_context():
             db.create_all()
 
