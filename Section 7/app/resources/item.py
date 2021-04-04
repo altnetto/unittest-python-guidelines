@@ -14,12 +14,14 @@ class Item(Resource):
                         required=True,
                         help="Every item needs a store id.")
 
-    @jwt_required()
+
+    @jwt_required
     def get(self, name):
         item = ItemModel.find_by_name(name)
         if item:
             return item.json()
         return {'message': 'Item not found'}, 404
+
 
     def post(self, name):
         if ItemModel.find_by_name(name):
@@ -36,12 +38,14 @@ class Item(Resource):
 
         return item.json(), 201
 
+
     def delete(self, name):
         item = ItemModel.find_by_name(name)
         if item:
             item.delete_from_db()
 
         return {'message': 'Item deleted'}
+
 
     def put(self, name):
         data = Item.parser.parse_args()
