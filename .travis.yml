@@ -5,4 +5,4 @@ python:
 install:
  -  "pip install -r requirements.txt"
 script: 
- -  "python -m pytest section-8/tests"
+ -  "python -m pytest Section-8/tests"
